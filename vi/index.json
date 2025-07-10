@@ -1,111 +1,111 @@
 [
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.1-prerequiste-env/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/2-prerequiste/2.1-prerequiste-env/",
 	"title": "Chuẩn bị môi trường phát triển WebApp bán hàng thời trang",
 	"tags": [],
 	"description": "",
 	"content": "Trong bước này, chúng ta sẽ chuẩn bị môi trường để phát triển và triển khai một ứng dụng thương mại điện tử sử dụng ReactJS + TailwindCSS cho frontend, và triển khai lên AWS sử dụng các dịch vụ S3, CloudFront và CloudWatch. Mục tiêu là tạo một môi trường phát triển thuận tiện, hiện đại, hỗ trợ theo dõi hoạt động thực tế của người dùng.\n🧩 Kiến trúc tổng quan Ứng dụng Fashion Store WebApp được chia thành hai phần chính:\nFrontend tĩnh (ReactJS) được build và lưu trữ trên Amazon S3 Phân phối toàn cầu thông qua Amazon CloudFront Giám sát truy cập, lỗi, và hoạt động hệ thống bằng AWS CloudWatch 🧰 Các công cụ cần thiết 1. Công cụ cài đặt trên máy Node.js \u0026gt;= 16 npm \u0026gt;= 8 Visual Studio Code hoặc bất kỳ trình soạn thảo nào AWS CLI AWS Account 1. Công cụ cài đặt trên máy 🗂 Tạo cấu trúc dự án ReactJS Cấu trúc dự án chuẩn đã được khởi tạo với create-react-app và thư mục như sau:\nFASHION_STORE_WEBAPP-MAIN/ ├── public/ ├── src/ │ ├── components/ │ │ ├── admin/ │ │ ├── auth/ │ │ ├── cart/ │ │ └── product/ │ ├── context/ │ ├── pages/ │ ├── services/ │ ├── utils/ ├── App.js ├── App.css ├── index.js ├── index.css ├── tailwind.config.js ├── postcss.config.js ├── package.json └── README.md 2. Viết mã nguồn cấp quyền để thực hiện các thao tác CRUD Cấu hình IAM: iam: role: statements: - Effect: Allow Action: - dynamodb:PutItem - dynamodb:GetItem - dynamodb:UpdateItem - dynamodb:DeleteItem - dynamodb:Scan - dynamodb:Query Resource: - arn:aws:dynamodb:ap-southeast-1:*:table/ProductsTable 3. Viết lại cấu hình API Cấu hình API Gateway Cấu hình bảo vệ API bằng API Key: apiGateway: apiKeySourceType: HEADER apiKeys: - name: ProductApiKey-${sls:stage} description: \u0026#34;API Key cho Product App\u0026#34; enabled: true usagePlan: throttle: rateLimit: 100 burstLimit: 50 quota: limit: 1000 period: MONTH "
 },
 {
-	"uri": "//localhost:1313/vi/3-s3/3.1-interview-s3/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/3-s3/3.1-interview-s3/",
 	"title": "Giới thiệu về S3",
 	"tags": [],
 	"description": "",
 	"content": "Giới thiệu về Amazon S3 Amazon Simple Storage Service (Amazon S3) là một dịch vụ lưu trữ dạng đối tượng cung cấp khả năng mở rộng theo yêu cầu sử dụng, đảm bảo tính khả dụng của dữ liệu, độ bảo mật, và hiệu năng ở mức cao nhất.\nAmazon S3 được thiết kế để đảm bảo độ bền 99,999999999% (11 9’s) và lưu trữ dữ liệu của hàng triệu ứng dụng cho các công ty trên toàn thế giới.\nS3 có thể được dùng cho nhiều trường hợp sử dụng như kho dữ liệu (data warehouse), trang web, ứng dụng di động, sao lưu và khôi phục, lưu trữ, ứng dụng doanh nghiệp, thiết bị IoT và phân tích dữ liệu lớn. Ngoài ra, Amazon S3 còn cung cấp các tính năng quản lý dễ sử dụng, giúp bạn có thể tổ chức dữ liệu và cấu hình các biện pháp kiểm soát truy cập để đáp ứng yêu cầu cụ thể của doanh nghiệp, tổ chức và yêu cầu về tuân thủ.\nS3 được xây dựng để đáp ứng yêu cầu của khách hàng thuộc mọi quy mô và ngành nghề, đều có thể dùng dịch vụ này để lưu trữ và bảo vệ bất kỳ lượng dữ liệu nào.\n"
 },
 {
-	"uri": "//localhost:1313/vi/3-s3/3.2-cloudfront/3.2.1-enablevpcdns/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/3-s3/3.2-cloudfront/3.2.1-enablevpcdns/",
 	"title": "Tạo CloudFront Distribution",
 	"tags": [],
 	"description": "",
 	"content": "Tạo CloudFront Distribution và cấu hình _Distribution Tạo CloudFront Distribution Truy cập vào AWS Console Tìm CloudFront trên giao diện hoặc thanh tìm kiếm Chọn CloudFront Trong giao diện CloudFront, chọn Create distribution Trong giao diện Create distribution Distribution name: nhập fashion-store-web Sau đó chọn Next Ở bước này, chọn Amazon S3 Lướt xuống phần _Origin_chọn browse S3 và chọn tên S3 mình tạo rồi bấm Next xong nó sẽ hiện phần Step 3 chọn phần Do not enable security protections rồi bấm next ra phần Step 4 khi đó ta rewiew lại toàn bộ sau đó bấm create distribution sau khi xong thì bấm edit ngay đó ngay ở phần Default root object - optional ghi ngay đó index.html rồi bấm save changes ngay sau khi xong thì chờ deploying sau khi xong thì bấm vào đường link này có ở phần Distribution domain name sau khi Last modified xong "
 },
 {
-	"uri": "//localhost:1313/vi/3-s3/3.1-interview-s3/3.1.1-create-bucket/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/3-s3/3.1-interview-s3/3.1.1-create-bucket/",
 	"title": "Tạo S3 bucket",
 	"tags": [],
 	"description": "",
 	"content": "Tạo bucket Tạo S3 bucket Truy cập AWS Management Console. Tìm S3 trên giao diện hoặc thanh tìm kiếm Chọn S3 Trong giao diện S3, chọn create bucket Trong giao diện Create bucket Bucket name: nhập ```fashion-store-web`` Trong phần Block Public Access settings for this bucket chúng ta tắt nó đi và tích vào ô I acknowledge that the current settings might result in this bucket and the objects within becoming public. Giữ nguyên các phần còn lại và chọn creater bucket Hoàn thành việc tạo S3 bucket để lưu trữ source code. "
 },
 {
-	"uri": "//localhost:1313/vi/4-cloudwatch/4.1-data/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/4-cloudwatch/4.1-data/",
 	"title": "CloudWatch",
 	"tags": [],
 	"description": "",
 	"content": "Tạo CloudWatch thì cần tạo Bucket S3 mới sau đó bấm vào create bucket ở phần Bucket name để tên là cf-logs-fashion-store rồi ở phần Block Public Access settings for this bucket bỏ giấu tích và tích vào phần I acknowledge tiếp theo bấm phần create bucket sau khi đăng ký thành công sẽ hiện dòng cf-logs-fashion-store sau khi xong thì vào thành tìm kiếm vào phần CloudFront chọn cái phần tạo gần nhất sau khi vào thì bấm vào phần logging rồi chọn Create a log delivery sau khi create vào ở phần destinaltion S3 bucket cf-logs-fashion-store mới tạo rồi bấm summit ` quay lại S3 rồi nhập vào cf-logs-fashion-stoređợi 7-20p (tùy vào thời điểm người truy cập) sau khi ấn vào sẽ hiện một thư mục AWSLogs/ 495599754297/CloudFront/E2MP7VDLOFYRL8.2025-07-09-19.910b6082.gz ` sau đó ta có 2 lựa chọn 1 là tải về rồi bật notepad hoặc vs code lên để kiểm tra 2 là có phần thời gian có sẵn về lần đăng nhập cuối ` "
 },
 {
-	"uri": "//localhost:1313/vi/1-introduce/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/1-introduce/",
 	"title": "Giới thiệu",
 	"tags": [],
 	"description": "",
 	"content": "Workshop này sẽ hướng dẫn bạn xây dựng, triển khai và giám sát một ứng dụng thương mại điện tử full-stack sử dụng ReactJS kết hợp với các dịch vụ AWS như S3, CloudFront, CloudWatch. Đây là ứng dụng bán hàng thời trang hiện đại — có đầy đủ tính năng như mua sắm, quản lý đơn hàng, mã giảm giá, chat hỗ trợ khách hàng, và quản lý thông báo.\nBạn sẽ học cách tích hợp giao diện frontend React, triển khai backend, upload ảnh sản phẩm lên S3, phân phối nhanh qua CloudFront và theo dõi hoạt động người dùng với CloudWatch.\nNhững lợi ích chính bạn sẽ đạt được từ workshop này:\nHiểu cách sử dụng S3 để lưu trữ ảnh sản phẩm và hosting tĩnh frontend. Cấu hình CloudFront để tăng tốc phân phối website toàn cầu. Tích hợp AWS CloudWatch để giám sát hoạt động và kiểm tra lỗi. Triển khai hệ thống giảm giá tự động theo điều kiện đơn hàng. Tạo dashboard admin để quản lý sản phẩm, đơn hàng, khách hàng. Phát triển toàn bộ hệ thống ReactJS + Tailwind + LocalStorage tối ưu. Quản lý trạng thái người dùng, popup thông báo, chat với admin. Đến cuối workshop, bạn sẽ xây dựng và triển khai một ứng dụng thương mại điện tử full-stack với các phương pháp tốt nhất về tracing và monitoring—sẵn sàng để mở rộng và sản xuất.\n"
 },
 {
-	"uri": "//localhost:1313/vi/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/",
 	"title": "Session Management",
 	"tags": [],
 	"description": "",
 	"content": "Làm việc với Hosting Website tĩnh với Amazon S3, CloudWatch và dịch vụ CloudFront Tổng quan Trong bài thực hành này, bạn sẽ được học cách xây dựng và triển khai các ứng dụng thương mại điện tử bán đồ node.js và react sử các dịch vụ AWS .Chúng ta sẽ sử dụng Hosting Website tĩnh với Amazon S3 , CloudWatch và dịch vụ cuối là CloudFront để triển khai toàn bộ bài.\nNội dung Giới thiệu Các bước chuẩn bị Triển khai giao diện tĩnh lên S3 và giao diện qua CloudFront giới thiệu về CloudWatch Dọn dẹp tài nguyên "
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/2-prerequiste/",
 	"title": "Các bước chuẩn bị",
 	"tags": [],
 	"description": "",
 	"content": "1. Yêu cầu hệ thống JavaScript ES6 trở lên Node.js \u0026gt;= 16 AWS CLI AWS Account với quyền tạo dịch vụ , CloudWatch, CloudFont, S3 IDE: Visual Studio Code (hoặc editor bạn thích) 2. Cài đặt công cụ cần thiết Cài AWS CLI macOS brew install awscli Windows Tải từ AWS CLI Cấu hình AWS CLI\naws configure Nhập: Access key, secret key Region: ap-southeast-1 Format: json Cài Node.js \u0026amp; npm macOS\nbrew install node Ubuntu\nsudo apt update sudo apt install awscli -y Cài Serverless Framework\nnpm install -g serverless Tạo SDK cho JavaScript v3\nnpm install @aws-sdk/client-s3 @aws-sdk/client-cloudfront @aws-sdk/client-cloudwatch-logs "
 },
 {
-	"uri": "//localhost:1313/vi/3-s3/3.1-interview-s3/3.1.2-data/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/3-s3/3.1-interview-s3/3.1.2-data/",
 	"title": "Tải dữ liệu và cấu hình",
 	"tags": [],
 	"description": "",
 	"content": "Tải dữ liệu Hiện tại chúng ta chưa có object nào Chúng ta cần ta cần tải source giao diện lên S3 Lưu ý: hãy sửa lại đường dẫn tùy theo đường vị trí dẫn đến folder giao diện của bạn hoặc chỉnh bằng tay khi thêm các file hoặc folder Cấu hình Chọn permission trong bucket, lướt xuống phần bucket policy chọn edit. Sau đó cấu hình cho S3 {\r\u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;,\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Sid\u0026#34;: \u0026#34;PublicReadGetObject\u0026#34;,\r\u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: \u0026#34;s3:GetObject\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::fashion-store-web/*\u0026#34;\r}\r]\r} Sau đó chọn save changes lưu ý phải nhớ ở phần code ở phần package.json nhớ thêm phần \u0026quot;homepage\u0026quot;: \u0026quot;http://fashion-store-web.s3-website-ap-southeast-1.amazonaws.com\u0026quot;, Tiếp theo, bạn chọn vào Properties, lướt xuống phần Static website hosting chọn edit Chọn enable Index document nhập index.html Error document nhập 404.html ( lưu ý error sẽ phụ thuộc vào web của bạn để là gì có thể vẫn là index.html hoặc 404.html) Sau đó nhấn Save change Trong phần Static website hosting có phần Bucket website endpoint, bạn sẽ nhận được đường dẫn đến giao diện tĩnh của bạn sau khi thành công thì có sẽ có link http://fashion-store-web.s3-website-ap-southeast-1.amazonaws.com nhấn vào đường link đó sẽ vào thẳng web "
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createiamrole/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/2-prerequiste/2.2-createiamrole/",
 	"title": "Xây dựng và triển khai giao diện người dùng",
 	"tags": [],
 	"description": "",
 	"content": "Sau khi hoàn tất việc xây dựng backend serverless, bước tiếp theo là xây dựng và triển khai giao diện người dùng với React.\nCác bước chuẩn bị 🖥️ Kiến trúc giao diện Giao diện người dùng sẽ là một ứng dụng React đơn trang , được build tĩnh và lưu trữ trên S3, phân phối qua CloudFront, Phân phối qua CloudWatch.\n🧰 Công cụ và tài nguyên cần chuẩn bị 1. Công cụ phát triển Node.js \u0026gt;= 18 npm hoặc yarn React + React DOM Visual Studio Code (VS Code) 2. Tài nguyên AWS cần thiết S3 bucket (hosting static website) CloudFront CloudWatch 3. Build giao diện Sau khi xây dựng xong giao diện npm run build Sau khi chạy lệnh, source giao diện của bạn sẽ đóng gói lại thành file build, bạn sẽ sử dụng file này cho bước tiếp theo "
 },
 {
-	"uri": "//localhost:1313/vi/3-s3/3.2-cloudfront/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/3-s3/3.2-cloudfront/",
 	"title": "Phân phối giao diện qua CloudFront",
 	"tags": [],
 	"description": "",
 	"content": "Giới thiệu về Amazon CloudFront Amazon CloudFront là một Content Delivery Network (CDN) do AWS cung cấp, được tối ưu cho hiệu suất và bảo mật.\nPhân phối nội dung thông qua hàng trăm Edge Locations toàn cầu. Giảm độ trễ và tăng tốc độ truyền tải bằng cách phục vụ nội dung từ vị trí gần người dùng cuối. Hỗ trợ nội dung\nNội dung tĩnh: HTML, CSS, JS, hình ảnh, video. Nội dung động: sử dụng caching có điều kiện và hỗ trợ: HTTP/2 TLS 1.3 WebSocket Tích hợp với các dịch vụ AWS\nAmazon S3 Amazon CloudWatch Amazon CloudFront Tính năng bảo mật\nGeo-restriction và Signed URLs/Cookies để kiểm soát truy cập. Tích hợp với AWS WAF để lọc traffic độc hại. Bảo vệ DDoS với AWS Shield Standard. Khả năng mở rộng và tùy chỉnh\nHỗ trợ header tùy biến. Tự động scale theo lưu lượng truy cập. Phù hợp cho ứng dụng có yêu cầu cao về: Hiệu năng Độ sẵn sàng Bảo mật "
 },
 {
-	"uri": "//localhost:1313/vi/3-s3/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/3-s3/",
 	"title": "Triển khai giao diện tĩnh lên S3 và giao diện qua CloudFront",
 	"tags": [],
 	"description": "",
 	"content": "Trong bước này, chúng ta sẽ thực hiện tạo kết nối đến các máy chủ EC2 của chúng ta, nằm trong cả public và private subnet.\nNội dung 3.1. Triển khai giao diện tĩnh lên S3 3.2. Phân phối giao diện qua CloudFront\n"
 },
 {
-	"uri": "//localhost:1313/vi/4-cloudwatch/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/4-cloudwatch/",
 	"title": "Giới thiệu CloudWatch",
 	"tags": [],
 	"description": "",
 	"content": "Amazon CloudWatch là một dịch vụ giám sát và quan sát hệ thống do AWS cung cấp, cho phép thu thập, theo dõi và phân tích các log, chỉ số hiệu suất (metrics), và sự kiện từ các tài nguyên AWS cũng như ứng dụng chạy trên nền tảng đám mây hoặc tại chỗ. Với CloudWatch, người dùng có thể dễ dàng theo dõi tình trạng hoạt động của hệ thống, thiết lập cảnh báo (alarm) khi có sự cố hoặc vượt ngưỡng, và trực quan hóa dữ liệu thời gian thực thông qua dashboard.\nCloudWatch đóng vai trò quan trọng trong việc đảm bảo hiệu suất, phát hiện lỗi nhanh chóng và hỗ trợ vận hành hệ thống hiệu quả, đặc biệt trong các kiến trúc serverless hoặc microservices như sử dụng AWS Lambda, API Gateway, EC2, và ECS.\nLợi ích khi sử dụng CloudWatch\nTheo dõi hệ thống real-time\nTự động cảnh báo khi có sự cố\nGiảm thời gian phát hiện lỗi\nHỗ trợ debug nhanh qua log\nDễ tích hợp vào hệ thống CI/CD và serverless\n"
 },
 {
-	"uri": "//localhost:1313/vi/5-cleanup/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/5-cleanup/",
 	"title": "Dọn dẹp tài nguyên  ",
 	"tags": [],
 	"description": "",
 	"content": "Chúng ta sẽ tiến hành các bước sau để xóa các tài nguyên chúng ta đã tạo trong bài thực hành này.\nXóa S3 Truy cập [giao diện quản trị dịch vụ S3] Click delete.(trong đó xóa tài nguyên trong trước bằng cách bấm Empty bucket rồi bấm permanently delete) sau khi xóa xong đó ta sẽ xóa thêm phần sau bằng cách bấm fashion-store-web rồi delete bucket làm tương tự với phần cf-logs-fashion-store Truy cập [giao diện quản trị dịch vụ CloudFoint] Click vào phần đã tạo rồi bấm Disable nó sẽ hiện thông báo và bấm Disable. Chờ từ 30s đến 2p để nó ngắt phần dịch vụ và đợi hiện Disabled là hoàn thành ` "
 },
 {
-	"uri": "//localhost:1313/vi/categories/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "//localhost:1313/vi/tags/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/vi/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
