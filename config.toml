@@ -1,4 +1,4 @@
-baseURL = "https://github.com/CaoDucHuy482003/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/"
+baseURL = "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/"
 relativeURLs = true
 canonifyURLs = true
 # Change the default theme to be use when building the site with Hugo

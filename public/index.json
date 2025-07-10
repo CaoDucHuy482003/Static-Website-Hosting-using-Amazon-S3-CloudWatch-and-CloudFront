@@ -1,111 +1,111 @@
 [
 {
-	"uri": "//localhost:1313/3-s3/3.2-cloudfront/3.2.1-enablevpcdns/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/3-s3/3.2-cloudfront/3.2.1-enablevpcdns/",
 	"title": "Create CloudFront Distribution",
 	"tags": [],
 	"description": "",
 	"content": "Create CloudFront Distribution and configure Distribution Create CloudFront Distribution Go to the AWS Console Search for CloudFront in the interface or search bar Select CloudFront In the CloudFront interface, select Create distribution In the Create distribution interface Distribution name: enter fashion-store-web Then select Next At this step, select Amazon S3 Scroll down to the Origin section, click browse S3 and select the S3 bucket you created Then click Next In Step 3, select Do not enable security protections and click next In Step 4, review everything and then click create distribution After finishing, click edit right there In the Default root object - optional section, enter index.html and click save changes After that, wait for deploying When done, click the link in the Distribution domain name section after Last modified "
 },
 {
-	"uri": "//localhost:1313/3-s3/3.1-interview-s3/3.1.1-create-bucket/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/3-s3/3.1-interview-s3/3.1.1-create-bucket/",
 	"title": "Create S3 bucket",
 	"tags": [],
 	"description": "",
 	"content": "Create a bucket Create an S3 bucket Go to the AWS Management Console. Search for S3 in the interface or search bar Select S3 In the S3 interface, select create bucket In the Create bucket interface Bucket name: enter ```fashion-store-web`` In the Block Public Access settings for this bucket section, turn it off and check the box I acknowledge that the current settings might result in this bucket and the objects within becoming public. Leave the remaining settings as default and select create bucket Complete the creation of the S3 bucket to store the source code. "
 },
 {
-	"uri": "//localhost:1313/3-s3/3.1-interview-s3/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/3-s3/3.1-interview-s3/",
 	"title": "Introduction to S3",
 	"tags": [],
 	"description": "",
 	"content": "Introduction to Amazon S3 Amazon Simple Storage Service (Amazon S3) is an object storage service that provides scalable storage on demand, ensuring high data availability, security, and top performance.\nAmazon S3 is designed to deliver 99.999999999% (11 9’s) durability and stores data for millions of applications for companies around the world.\nS3 can be used for many use cases such as data warehouses, websites, mobile applications, backup and restore, archiving, enterprise applications, IoT devices, and big data analytics. In addition, Amazon S3 provides easy-to-use management features, allowing you to organize data and configure access control measures to meet the specific requirements of your business, organization, and compliance needs.\nS3 is built to meet the needs of customers of all sizes and industries, allowing anyone to store and protect any amount of data.\n"
 },
 {
-	"uri": "//localhost:1313/4-cloudwatch/4.1-data/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/4-cloudwatch/4.1-data/",
 	"title": "CloudWatch",
 	"tags": [],
 	"description": "",
 	"content": "Create CloudWatch First, create a new S3 Bucket Then click create bucket In the Bucket name field, enter cf-logs-fashion-store In the Block Public Access settings for this bucket, uncheck the box and check the I acknowledge box Next, click create bucket After successful registration, you will see the line cf-logs-fashion-store Then, in the search bar, go to CloudFront and select the most recently created distribution In the distribution, go to logging and select Create a log delivery When creating, in the destination S3 bucket, select the newly created cf-logs-fashion-store and click submit Go back to S3 and open cf-logs-fashion-store, wait 7-20 minutes (depending on access time) When you open it, you will see a folder AWSLogs/495599754297/CloudFront/E2MP7VDLOFYRL8.2025-07-09-19.910b6082.gz Then you have two options: 1) download and open with notepad or VS Code to check, or 2) use the available time information for the last login "
 },
 {
-	"uri": "//localhost:1313/1-introduce/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/1-introduce/",
 	"title": "Introduction",
 	"tags": [],
 	"description": "",
 	"content": "This workshop will guide you to build, deploy, and monitor a full-stack e-commerce application using ReactJS combined with AWS services such as S3, CloudFront, and CloudWatch. This is a modern fashion e-commerce application — fully featured with shopping, order management, discount codes, customer support chat, and notification management.\nYou will learn how to integrate the React frontend, deploy the backend, upload product images to S3, deliver content quickly via CloudFront, and monitor user activity with CloudWatch.\nThe main benefits you will gain from this workshop:\nUnderstand how to use S3 to store product images and host the static frontend. Configure CloudFront to accelerate global website delivery. Integrate AWS CloudWatch to monitor activity and check for errors. Deploy an automatic discount system based on order conditions. Create an admin dashboard to manage products, orders, and customers. Develop the entire system with ReactJS + Tailwind + optimized LocalStorage. Manage user state, notification popups, and chat with admin. By the end of the workshop, you will have built and deployed a full-stack e-commerce application with best practices in tracing and monitoring—ready for scaling and production.\n"
 },
 {
-	"uri": "//localhost:1313/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/",
 	"title": "Session Management",
 	"tags": [],
 	"description": "",
 	"content": "Working with Static Website Hosting using Amazon S3, CloudWatch, and CloudFront Overview In this lab, you will learn how to build and deploy e-commerce applications using Node.js and React with AWS services. We will use static website hosting with Amazon S3, CloudWatch, and finally CloudFront to deploy the entire lab.\nContent Introduction Preparation steps Deploy static interface to S3 and deliver via CloudFront Introduction to CloudWatch Clean up resources "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/2-prerequiste/",
 	"title": "Preparation Steps",
 	"tags": [],
 	"description": "",
 	"content": "1. System Requirements JavaScript ES6 or later Node.js \u0026gt;= 16 AWS CLI AWS Account with permissions to create services, CloudWatch, CloudFront, S3 IDE: Visual Studio Code (or your preferred editor) 2. Install Required Tools Install AWS CLI macOS brew install awscli Windows Download from AWS CLI Configure AWS CLI\naws configure Enter: Access key, secret key Region: ap-southeast-1 Format: json\nInstall Node.js \u0026amp; npm macOS\nbrew install node Ubuntu\nsudo apt update sudo apt install awscli -y Install Serverless Framework\nnpm install -g serverless Install AWS SDK for JavaScript v3\nnpm install @aws-sdk/client-s3 \\ @aws-sdk/client-cloudfront \\ @aws-sdk/client-cloudwatch-logs "
 },
 {
-	"uri": "//localhost:1313/3-s3/3.1-interview-s3/3.1.2-data/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/3-s3/3.1-interview-s3/3.1.2-data/",
 	"title": "Upload Data and Configuration",
 	"tags": [],
 	"description": "",
 	"content": "Upload Data Currently, we do not have any objects We need to upload the UI source to S3 Note: Please adjust the path according to your UI folder location or manually add files/folders as needed Configuration Select permission in the bucket, scroll down to the bucket policy section and select edit. Then configure S3 as follows: {\r\u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;,\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Sid\u0026#34;: \u0026#34;PublicReadGetObject\u0026#34;,\r\u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: \u0026#34;s3:GetObject\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::fashion-store-web/*\u0026#34;\r}\r]\r} Then select save changes Note: In your package.json, remember to add \u0026quot;homepage\u0026quot;: \u0026quot;http://fashion-store-web.s3-website-ap-southeast-1.amazonaws.com\u0026quot;, Next, go to Properties, scroll down to Static website hosting and select edit Select enable Index document: enter index.html Error document: enter 404.html (note: the error document depends on your web, it can be index.html or 404.html) Then click Save change In the Static website hosting section, there is a Bucket website endpoint, you will get the link to your static UI After success, you will have a link like http://fashion-store-web.s3-website-ap-southeast-1.amazonaws.com Click that link to access your website "
 },
 {
-	"uri": "//localhost:1313/3-s3/3.2-cloudfront/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/3-s3/3.2-cloudfront/",
 	"title": "Distribute UI via CloudFront",
 	"tags": [],
 	"description": "",
 	"content": "Introduction to Amazon CloudFront Amazon CloudFront is a Content Delivery Network (CDN) provided by AWS, optimized for performance and security.\nDistributes content through hundreds of global Edge Locations. Reduces latency and accelerates delivery by serving content from locations close to end users. Content Support\nStatic content: HTML, CSS, JS, images, video. Dynamic content: supports conditional caching and features like: HTTP/2 TLS 1.3 WebSocket Integration with AWS services\nAmazon S3 Amazon CloudWatch Amazon CloudFront Security features\nGeo-restriction and Signed URLs/Cookies for access control. Integration with AWS WAF to filter malicious traffic. DDoS protection with AWS Shield Standard. Scalability and customization\nSupports custom headers. Automatically scales with traffic. Suitable for applications with high requirements for: Performance Availability Security "
 },
 {
-	"uri": "//localhost:1313/3-s3/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/3-s3/",
 	"title": "Deploy Static UI to S3 and Distribute via CloudFront",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will deploy the static UI to S3 and distribute it via CloudFront.\nContent 3.1. Deploy static UI to S3 3.2. Distribute UI via CloudFront\n"
 },
 {
-	"uri": "//localhost:1313/4-cloudwatch/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/4-cloudwatch/",
 	"title": "Introduction to CloudWatch",
 	"tags": [],
 	"description": "",
 	"content": "Amazon CloudWatch is a monitoring and observability service provided by AWS, allowing you to collect, track, and analyze logs, performance metrics, and events from AWS resources as well as applications running on cloud or on-premises. With CloudWatch, users can easily monitor system health, set up alarms for incidents or threshold breaches, and visualize real-time data through dashboards.\nCloudWatch plays an important role in ensuring performance, quickly detecting errors, and supporting efficient system operations, especially in serverless or microservices architectures such as AWS Lambda, API Gateway, EC2, and ECS.\nBenefits of using CloudWatch:\nReal-time system monitoring\nAutomatic alerts for incidents\nReduce error detection time\nFast debugging via logs\nEasy integration into CI/CD and serverless systems\n"
 },
 {
-	"uri": "//localhost:1313/5-cleanup/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/5-cleanup/",
 	"title": "Clean up resources",
 	"tags": [],
 	"description": "",
 	"content": "We will follow these steps to delete the resources we created in this lab.\nDelete S3 Go to [S3 service management console] Click delete (first empty the bucket by clicking Empty bucket, then click permanently delete) After deleting, click on fashion-store-web and then delete bucket Do the same for cf-logs-fashion-store Go to [CloudFront service management console] Click on the created distribution, then click Disable. A notification will appear, click Disable. Wait 30 seconds to 2 minutes for the service to be disabled and wait for Disabled status to appear to complete "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.1-prerequiste-env/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/2-prerequiste/2.1-prerequiste-env/",
 	"title": "",
 	"tags": [],
 	"description": "",
 	"content": "title: \u0026ldquo;Preparing the Fashion Store WebApp Development Environment\u0026rdquo; date: 2025-07-09 weight: 1 chapter: false pre: \u0026ldquo; 2.1 \u0026rdquo; In this step, we will prepare the environment to develop and deploy an e-commerce application using ReactJS + TailwindCSS for the frontend, and deploy to AWS using S3, CloudFront, and CloudWatch. The goal is to create a convenient, modern development environment that supports real user activity monitoring.\n🧩 Architecture Overview The Fashion Store WebApp application is divided into two main parts:\nStatic frontend (ReactJS) is built and stored on Amazon S3 Global distribution via Amazon CloudFront Access, error, and system activity monitoring with AWS CloudWatch 🧰 Required Tools 1. Tools to install on your machine Node.js \u0026gt;= 16 npm \u0026gt;= 8 Visual Studio Code or any code editor AWS CLI AWS Account 🗂 Create ReactJS Project Structure The standard project structure has been initialized with create-react-app and the folders are as follows:\nFASHION_STORE_WEBAPP-MAIN/ ├── public/ ├── src/ │ ├── components/ │ │ ├── admin/ │ │ ├── auth/ │ │ ├── cart/ │ │ └── product/ │ ├── context/ │ ├── pages/ │ ├── services/ │ ├── utils/ ├── App.js ├── App.css ├── index.js ├── index.css ├── tailwind.config.js ├── postcss.config.js ├── package.json └── README.md 2. Write IAM permission code for CRUD operations IAM configuration: iam: role: statements: - Effect: Allow Action: - dynamodb:PutItem - dynamodb:GetItem - dynamodb:UpdateItem - dynamodb:DeleteItem - dynamodb:Scan - dynamodb:Query Resource: - arn:aws:dynamodb:ap-southeast-1:*:table/ProductsTable 3. API configuration API Gateway configuration Protect API with API Key: apiGateway: apiKeySourceType: HEADER apiKeys: - name: ProductApiKey-${sls:stage} description: \u0026#34;API Key for Product App\u0026#34; enabled: true usagePlan: throttle: rateLimit: 100 burstLimit: 50 quota: limit: 1000 period: MONTH "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.2-createiamrole/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/2-prerequiste/2.2-createiamrole/",
 	"title": "",
 	"tags": [],
 	"description": "",
 	"content": "title: \u0026ldquo;Build and Deploy the User Interface\u0026rdquo; date: 2025-07-09 weight: 2 chapter: false pre: \u0026quot; 2.2 \u0026quot; After completing the serverless backend, the next step is to build and deploy the user interface with React.\nPreparation Steps 🖥️ UI Architecture The user interface will be a single-page React application, built statically and stored on S3, distributed via CloudFront, and monitored via CloudWatch.\n🧰 Required Tools and Resources 1. Development Tools Node.js \u0026gt;= 18 npm or yarn React + React DOM Visual Studio Code (VS Code) 2. Required AWS Resources S3 bucket (for hosting static website) CloudFront CloudWatch 3. Build the UI After building the UI, run: npm run build After running the command, your UI source will be packaged into the build folder, which you will use for the next step. "
 },
 {
-	"uri": "//localhost:1313/categories/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "//localhost:1313/tags/",
+	"uri": "https://caoduchuy482003.github.io/Static-Website-Hosting-using-Amazon-S3-CloudWatch-and-CloudFront/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
